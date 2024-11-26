@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">PIO Gerenciador de Tarefas</string>
+    <string name="title_activity_main">PIO Gerenciador de Tarefas</string>
+    <string name="package_name">com.pio.app</string>
+    <string name="custom_url_scheme">com.pio.app</string>
+</resources>

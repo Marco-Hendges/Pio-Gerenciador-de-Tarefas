@@ -1,0 +1,48 @@
+h1 {
+    color: blue;
+}
+
+p {
+    color: green;
+}
+
+ion-button {
+    --background: rgb(7, 138, 182);
+    --color: white;
+    --border-radius: 5px;
+}
+
+ion-button:hover {
+    --background: white;
+    --color: rgb(7, 138, 182);
+    border: 1px solid rgb(7, 138, 182);
+}
+
+.fundo {
+    background-color: lightgray;
+    text-align: center;
+}
+
+.secao {
+    margin-top: 10px;
+    border: 1px solid black;
+}
+
+.row {
+    margin: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.titulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+}
+
+.imagens-galeria {
+    max-height: 250px;
+    margin: 15px;
+}

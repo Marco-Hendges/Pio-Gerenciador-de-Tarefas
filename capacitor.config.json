@@ -1,0 +1,6 @@
+{
+  "appId": "com.pio.app",
+  "appName": "PIO Gerenciador de Tarefas",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}
