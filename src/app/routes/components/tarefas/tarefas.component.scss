@@ -1,0 +1,42 @@
+ion-content {
+    --background: #2C2C2C;
+}
+
+ion-toolbar {
+    --background: #2C2C2C;
+    --color: white;
+}
+
+ion-list {
+    --background: #3B3B3B;
+    border-radius: 12px;
+    padding: 8px;
+}
+
+.tag {
+    background-color: #0078D7;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+ion-searchbar {
+    margin: 16px;
+    --background: #404040;
+    --color: white;
+    --placeholder-color: gray;
+}
+
+ion-item {
+    --background: #404040;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+h2,
+p,
+small {
+    color: white;
+}
