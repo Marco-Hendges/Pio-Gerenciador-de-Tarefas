@@ -1,0 +1,25 @@
+<app-header [title]="'Grupos'"></app-header>
+
+<ion-content>
+  <ion-searchbar placeholder="Digite o nome da grupo aqui..." [(ngModel)]="iSearch"></ion-searchbar>
+
+  <ion-list>
+    <ng-container *ngFor="let wGrupo of iGrupos">
+      <ion-item *ngIf="wGrupo.nome.toLowerCase().includes(iSearch.toLowerCase())">
+        <ion-label class="grupos">
+
+          <div>
+            <h2>{{ wGrupo.nome }}</h2>
+            <ion-button fill="clear" slot="end">
+              <ion-icon name="create"></ion-icon>
+            </ion-button>
+          </div>
+          <div *ngFor="let wMembro of wGrupo.membros" style="margin: 5px 0;">
+            <div class="tag">{{ wMembro }}</div>
+          </div>
+
+        </ion-label>
+      </ion-item>
+    </ng-container>
+  </ion-list>
+</ion-content>

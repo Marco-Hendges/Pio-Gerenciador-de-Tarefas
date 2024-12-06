@@ -1,0 +1,22 @@
+<ion-content class="login-content">
+  <div class="login-container">
+    <div class="login-logo">
+      <img src="assets/icon/logo.jpeg" alt="Logo" />
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <ion-input formControlName="username" type="text" label="Usuário" label-placement="floating" fill="solid"></ion-input>
+      <ion-input formControlName="password" type="password" label="Senha" label-placement="floating" fill="solid"></ion-input>
+
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+
+      <div class="formata-button">
+        <ion-button type="submit" shape="round" size="large" strong="true" [disabled]="loginForm.invalid || loading">
+          {{ loading ? 'Entrando...' : 'Entrar' }}
+        </ion-button>
+      </div>
+    </form>
+  </div>
+</ion-content>

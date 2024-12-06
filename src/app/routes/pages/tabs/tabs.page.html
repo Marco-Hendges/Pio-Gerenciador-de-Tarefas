@@ -1,0 +1,18 @@
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="tarefas" href="/tabs/tarefas">
+      <ion-icon aria-hidden="true" name="list"></ion-icon>
+      <ion-label>Tarefas</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button (click)="openCadastroOptions()">
+      <ion-icon aria-hidden="true" name="add"></ion-icon>
+      <ion-label>Cadastrar</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="grupos" href="/tabs/grupos">
+      <ion-icon aria-hidden="true" name="people"></ion-icon>
+      <ion-label>Grupos</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

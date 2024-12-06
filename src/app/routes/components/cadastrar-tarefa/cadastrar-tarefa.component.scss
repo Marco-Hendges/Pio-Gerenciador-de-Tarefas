@@ -1,0 +1,26 @@
+ion-card {
+    margin: 16px;
+    padding: 16px;
+    border-radius: 8px;
+    background-color: #2c2c2c;
+}
+.content ion-input {
+    margin: 10px 0;
+    --background: #D9D9D9;
+    --color: black;
+}
+
+// ion-item {
+//     --background: transparent;
+//     --color: white;
+// }
+
+// ion-label {
+//     color: white;
+// }
+
+ion-button {
+    margin-top: 16px;
+    --background: #007aff;
+    --color: white;
+}

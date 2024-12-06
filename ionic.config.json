@@ -1,7 +1,5 @@
 {
-  "name": "pio-gerenciador-tarefas",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "react-vite"
+  "name": "ionic-app-base",
+  "integrations": {},
+  "type": "angular-standalone"
 }

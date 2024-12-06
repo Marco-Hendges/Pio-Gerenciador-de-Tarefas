@@ -1,0 +1,26 @@
+<app-header [title]="'Tarefas'"></app-header>
+
+<ion-content>
+  <ion-searchbar placeholder="Digite o nome da tarefa aqui..." [(ngModel)]="iSearch"></ion-searchbar>
+
+  <ion-list>
+    <ng-container *ngFor="let wTarefa of iTarefas">
+      <ion-item *ngIf="wTarefa.title.toLowerCase().includes(iSearch.toLowerCase()) || wTarefa.description.toLowerCase().includes(iSearch.toLowerCase())">
+        <ion-label class="tarefas">
+          <div>
+            <h2>{{ wTarefa.title }}</h2>  
+            <ion-button fill="clear" slot="end">
+              <ion-icon name="create"></ion-icon>
+            </ion-button>
+          </div>
+          <p>{{ wTarefa.description }}</p>
+          <small>{{ wTarefa.dateEnd | date: 'dd/MM/yyyy HH:mm' }}</small>
+          <div>
+            <ion-checkbox labelPlacement="end" justify="start" [(ngModel)]="wTarefa.completed">Concluir</ion-checkbox>
+            <div class="tag">{{ wTarefa.user }}</div>
+          </div>
+        </ion-label>
+      </ion-item>
+    </ng-container>
+  </ion-list>
+</ion-content>

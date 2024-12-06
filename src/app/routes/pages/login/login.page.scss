@@ -1,0 +1,78 @@
+.login-content {
+    --background: #2C2C2C;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    color: white;
+
+    .login-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .login-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 8vh 0;
+
+        img {
+            width: 150px;
+            border-radius: 100%;
+            border: 5px solid black;
+        }
+    }
+
+    form {
+        margin: 8vw;
+        display: flex;
+        flex-direction: column;
+    }
+
+    ion-input {
+        margin: 10px 0;
+        --background: #D9D9D9;
+        --color: black;
+    }
+
+    .formata-button {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .login-button {
+        --background: #0096F4;
+        --background-hover: #0180cf;
+        --background-activated: #1da4f8;
+        --background-focused: #1da4f8;
+
+        --color: #D9D9D9;
+        text-transform: unset;
+
+        margin: 20px 0;
+    }
+
+    .google-button {
+        margin: 20px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+        color: #D9D9D9;
+        background: transparent;
+
+        img {
+            width: 20px;
+            margin-right: 8px;
+        }
+    }
+
+    // .toggle-password {
+    //     position: absolute;
+    //     top: 20px;
+    //     right: 20px;
+    //     --color: white;
+    // }
+}
