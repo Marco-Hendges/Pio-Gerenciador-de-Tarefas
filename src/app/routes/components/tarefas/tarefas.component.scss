@@ -10,11 +10,11 @@ ion-toolbar {
 ion-list {
     --background: #3B3B3B;
     border-radius: 12px;
-    padding: 8px;
+    padding: 15px;
 }
 
 .tag {
-    background-color: #0078D7;
+    background-color: #2C2C2C;
     color: white;
     padding: 4px 8px;
     border-radius: 8px;
@@ -22,21 +22,68 @@ ion-list {
 }
 
 ion-searchbar {
-    margin: 16px;
-    --background: #404040;
-    --color: white;
+    padding: 16px;
+    --background: #D9D9D9;
+    --color: #2C2C2C;
     --placeholder-color: gray;
 }
 
 ion-item {
     --background: #404040;
-    margin-bottom: 12px;
-    border-radius: 8px;
-    padding: 8px;
+    margin-bottom: 20px;
+    border-radius: 20px;
 }
 
-h2,
-p,
-small {
-    color: white;
+.tarefas {
+    text-align: justify;
+    word-break: break-word;
+
+    ion-checkbox {
+        --size: 25px;
+        --checkbox-background-checked: #0096F4;
+
+        label {
+            width: min-content;
+        }
+    }
+
+    ion-checkbox::part(container) {
+        border-radius: 6px;
+        border: 2px solid #D9D9D9;
+    }
+
+    ion-button ion-icon {
+        color: #E8EAED;
+        font-size: 24px;
+    }
+
+    p {
+        font-size: 0.80rem;
+    }
+
+    p,
+    small {
+        color: white;
+        margin: 8px 0;
+    }
+
+    small {
+        display: flex;
+        justify-content: center;
+    }
+
+    div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        h2 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            color: white;
+            margin: 8px 0;
+            margin-right: 15px;
+        }
+    }
 }

@@ -3,27 +3,20 @@
     <div class="login-logo">
       <img src="assets/icon/logo.jpeg" alt="Logo" />
     </div>
-    <form class="d-flex flex-column" [formGroup]="loginForm" (ngSubmit)="onLogin()">
-      <!-- <ion-item> -->
-        <!-- <ion-label position="floating">Usuário:</ion-label> -->
-        <ion-input formControlName="email" type="email" label="E-mail" label-placement="floating" fill="solid" [(ngModel)]="userEmail"></ion-input>
-        <!-- <ion-input formControlName="email" type="text" [(ngModel)]="userEmail"></ion-input> -->
-      <!-- </ion-item> -->
-      <!-- <ion-item> -->
-        <!-- <ion-label position="floating">Senha:</ion-label> -->
-        <ion-input formControlName="password" type="password" label="Senha" label-placement="floating" fill="solid" [(ngModel)]="userPassword"></ion-input>
-        <!-- <ion-input formControlName="password" type="password" [(ngModel)]="userPassword"></ion-input> -->
-      <!-- </ion-item> -->
+
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <ion-input formControlName="username" type="text" label="Usuário" label-placement="floating" fill="solid"></ion-input>
+      <ion-input formControlName="password" type="password" label="Senha" label-placement="floating" fill="solid"></ion-input>
+
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+
       <div class="formata-button">
-        <ion-button type="submit" shape="round" size="large" strong="true" class="login-button" [disabled]="loginForm.invalid">Entrar</ion-button>
-        <ion-button fill="clear" class="google-button">
-          <img src="assets/images/google-icon.svg" alt="Google Icon" />
-          Login com o Google
+        <ion-button type="submit" shape="round" size="large" strong="true" [disabled]="loginForm.invalid || loading">
+          {{ loading ? 'Entrando...' : 'Entrar' }}
         </ion-button>
       </div>
     </form>
   </div>
-  <!-- <ion-button fill="clear" class="toggle-password" (click)="togglePasswordVisibility()">
-    <ion-icon name="eye-outline"></ion-icon>
-  </ion-button> -->
 </ion-content>

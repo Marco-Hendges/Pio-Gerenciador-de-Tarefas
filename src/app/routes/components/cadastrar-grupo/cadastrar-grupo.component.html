@@ -1,0 +1,29 @@
+<app-header [title]="'Cadastrar Grupo'"></app-header>
+
+
+<ion-content>
+  <form [formGroup]="grupoForm" (ngSubmit)="salvarGrupo()">
+    <ion-list>
+      <ion-item>
+        <ion-label>Nome do Grupo</ion-label>
+        <ion-input formControlName="nome" placeholder="Digite o nome do grupo"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Integrantes</ion-label>
+        <ion-textarea formControlName="integrantes"
+          placeholder="Digite os e-mails dos integrantes separados por vírgula"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Descrição</ion-label>
+        <ion-textarea formControlName="descricao" placeholder="Digite uma breve descrição do grupo"></ion-textarea>
+      </ion-item>
+    </ion-list>
+
+    <ion-button expand="full" type="submit" [disabled]="!grupoForm.valid">
+      <ion-icon slot="start" name="checkmark"></ion-icon>
+      Salvar
+    </ion-button>
+  </form>
+</ion-content>

@@ -1,39 +1,52 @@
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IonButton, IonContent, IonInput } from '@ionic/angular/standalone';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [IonButton, IonContent, IonInput, ReactiveFormsModule]
+  imports: [IonButton, IonContent, IonInput, ReactiveFormsModule, FormsModule, CommonModule, HttpClientModule]
 })
 export class LoginPage {
   loginForm: FormGroup;
-  userEmail: string = '';
-  userPassword: string = '';
+  loading: boolean = false;
+  errorMessage: string | null = null;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
-  public onLogin() {
-    // if (this.loginForm.valid) {
-      // Simulação de login bem-sucedido
-      console.log('Login realizado com sucesso:', this.loginForm.value);
-      this.router.navigate(['/tabs']);
-    // } else {
-    //   console.log('Formulário inválido!');
-    // }
-  }
+  onLogin(): void {
+    if (this.loginForm.valid) {
+      this.loading = true;
+      this.errorMessage = null;
 
-  public togglePasswordVisibility() {
-    const passwordField = document.querySelector('input[type="password"]') as HTMLInputElement;
-    passwordField.type = passwordField.type === 'password' ? 'text' : 'password';
+      const user = this.loginForm.value;
+
+      this.authService.login(user).subscribe({
+        next: () => {
+          this.loading = false;
+          this.router.navigate(['/tabs']); // Redireciona para a tela principal
+        },
+        error: (error) => {
+          this.loading = false;
+          this.errorMessage = 'Erro ao fazer login. Tente novamente.';
+          console.error(error);
+        },
+      });
+    }
   }
 }
