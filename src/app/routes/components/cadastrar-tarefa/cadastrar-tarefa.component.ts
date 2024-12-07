@@ -6,6 +6,7 @@ import { addIcons } from 'ionicons';
 import { checkmark } from 'ionicons/icons';
 import { HeaderComponent } from '../header/header.component';
 import { format } from 'date-fns'; // Biblioteca para manipular datas
+import { TarefaService } from 'src/app/core/services/tarefa.service';
 
 
 @Component({
@@ -17,54 +18,48 @@ import { format } from 'date-fns'; // Biblioteca para manipular datas
 })
 export class CadastrarTarefaComponent implements OnInit {
   taskForm: FormGroup;
-  tarefaNome: string = '';
-  tarefaData: string = '';
-  tarefaAtribuicao: string = '';
-  tarefaDescricao: string = '';
 
-  taskDate: string = ''; // Valor inicial (opcional)
   constructor(
     private fb: FormBuilder,
     private navCtrl: NavController,
-    private platform: Platform,
+    private tarefaService: TarefaService // Serviço injetado
   ) {
-    addIcons({ checkmark });
-
     this.taskForm = this.fb.group({
-      name: ['', Validators.required],
-      time: ['', Validators.required],
-      date: ['', Validators.required],
-      assignee: [''],
-      description: [''],
+      title: ['', Validators.required],
+      datetime: ['', Validators.required],
+      description: ['', Validators.required],
     });
-
-    console.log(this.taskForm);
-    console.log('Inicializou o construtor');
   }
 
-  ngOnInit() { 
-    console.log('Inicializou o ngOnInit');
-    // this.platform.backButton.subscribeWithPriority(10, () => {
-    //   // Redireciona para a tela de Tarefas
-    //   this.navCtrl.navigateBack(['/tabs/tarefas']);
-    // });
-  }
+  ngOnInit() { { } }
 
   onSubmit() {
     if (this.taskForm.valid) {
-      console.log('Tarefa cadastrada:', this.taskForm.value);
-      // Lógica para salvar a tarefa
-      this.navCtrl.navigateBack('/tabs/tarefas'); // Redireciona para a lista de tarefas
+      const formData = this.taskForm.value;
+
+      // Converte a data para o formato ISO 8601
+      const formattedTask = {
+        title: formData.title,
+        datetime: new Date(formData.datetime).toISOString(),
+        description: formData.description,
+      };
+
+      // Utiliza o serviço para enviar a tarefa para a API
+      this.tarefaService.addTarefa(formattedTask).subscribe({
+        next: (response: any) => {
+          console.log('Tarefa cadastrada com sucesso:', response);
+          alert('Tarefa cadastrada com sucesso!');
+          this.navCtrl.navigateBack('/tabs/tarefas'); // Redireciona para a lista de tarefas
+        },
+        error: (err: any) => {
+          console.error('Erro ao cadastrar a tarefa:', err);
+          alert('Erro ao cadastrar a tarefa.');
+        },
+      });
     } else {
       console.error('Formulário inválido');
+      alert('Preencha todos os campos obrigatórios.');
     }
   }
-
-    // Método chamado quando a data é alterada
-    onDateChange(event: any) {
-      const date = new Date(event.detail.value);
-      this.taskDate = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`; // Formata a data para "DD-MM-YYYY"
-      console.log('Data selecionada:', this.taskDate);
-    }
 
 }

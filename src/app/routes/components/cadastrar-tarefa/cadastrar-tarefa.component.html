@@ -4,27 +4,34 @@
   <ion-card>
     <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
 
-      <ion-input formControlName="name" label="Nome da Tarefa" placeholder="Digite o nome da tarefa"
-        label-placement="floating" fill="solid" [(ngModel)]="tarefaNome"></ion-input>
+      <!-- Nome da Tarefa -->
+      <ion-input 
+        formControlName="title" 
+        label="Nome da Tarefa" 
+        placeholder="Digite o nome da tarefa"
+        label-placement="floating" 
+        fill="solid">
+      </ion-input>
 
-        
-        <ion-datetime-button datetime="taskDate"></ion-datetime-button>
+      <!-- Seletor de Data -->
+      <ion-datetime-button datetime="dataTarefa"></ion-datetime-button>
+      <ion-modal [keepContentsMounted]="true">
+        <ng-template>
+          <ion-datetime id="dataTarefa" presentation="date" formControlName="datetime"></ion-datetime>
+        </ng-template>
+      </ion-modal>
 
-        <ion-modal keepContentsMounted="true">
-          <ng-template>
-            <!-- Certifique-se de que o ID corresponde ao do botão -->
-            <ion-datetime id="taskDate" presentation="date" [value]="taskDate" (ionChange)="onDateChange($event)"></ion-datetime>
-          </ng-template>
-        </ion-modal>
+      <!-- Descrição -->
+      <ion-input 
+        formControlName="description" 
+        label="Descrição" 
+        placeholder="Adicione uma descrição"
+        label-placement="floating" 
+        fill="solid">
+      </ion-input>
 
-      <ion-input formControlName="assignee" label="Atribuição" placeholder="Digite o nome do responsável"
-        label-placement="floating" fill="solid" [(ngModel)]="tarefaAtribuicao"></ion-input>
-
-      <ion-input formControlName="description" label="Descrição" placeholder="Adicione uma descrição"
-        label-placement="floating" fill="solid" [(ngModel)]="tarefaDescricao"></ion-input>
-
+      <!-- Botão Salvar -->
       <ion-button type="submit" expand="block" color="primary">
-        <ion-icon name="checkmark" slot="start"></ion-icon>
         Salvar
       </ion-button>
     </form>
