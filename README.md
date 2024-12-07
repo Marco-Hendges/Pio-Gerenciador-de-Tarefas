@@ -22,7 +22,6 @@ Este é um aplicativo de gerenciador de tarefas desenvolvido com **Ionic** e **A
   - [Ionic](https://ionicframework.com/)
   - [Angular](https://angular.io/)
   - [TypeScript](https://www.typescriptlang.org/)
-  - [Date-fns](https://date-fns.org/) (Manipulação de datas)
 - **Backend:**
   - API desenvolvida para gerenciar tarefas https://github.com/frosipedro/API-GerenciadorTarefas.git
 - **Outros:**
