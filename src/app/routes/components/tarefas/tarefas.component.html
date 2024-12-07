@@ -14,10 +14,10 @@
             </ion-button>
           </div>
           <p>{{ wTarefa.description }}</p>
-          <small>{{ wTarefa.dateEnd | date: 'dd/MM/yyyy HH:mm' }}</small>
+          <small>{{ wTarefa.datetime | date: 'dd/MM/yyyy HH:mm' }}</small>
           <div>
             <ion-checkbox labelPlacement="end" justify="start" [(ngModel)]="wTarefa.completed">Concluir</ion-checkbox>
-            <div class="tag">{{ wTarefa.user }}</div>
+            <div class="tag">Debugging Dragons</div>
           </div>
         </ion-label>
       </ion-item>
