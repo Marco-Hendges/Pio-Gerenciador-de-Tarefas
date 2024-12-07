@@ -8,7 +8,7 @@ import { StorageUtil } from 'src/app/shared/utils/storage.util'; // Importar o u
   providedIn: 'root',
 })
 export class TarefaService {
-  private apiUrl = `${environment.apiUrl}/tasks`; // URL da sua API
+  private apiUrl = `${environment.apiUrl}`; // URL da sua API
 
   constructor(
     private http: HttpClient,
@@ -24,7 +24,7 @@ export class TarefaService {
       'Authorization': `Bearer ${token}`, // Adicionar o token ao cabeçalho
     });
 
-    return this.http.get<any[]>(this.apiUrl, { headers });
+    return this.http.get<any[]>(`${this.apiUrl}/tasks`, { headers });
   }
 
   // Método para cadastrar uma nova tarefa
@@ -37,6 +37,6 @@ export class TarefaService {
       'Content-Type': 'application/json', // Indicar que o conteúdo será JSON
     });
 
-    return this.http.post<any>(this.apiUrl, task, { headers });
+    return this.http.post<any>(`${this.apiUrl}/task`, task, { headers });
   }
 }
