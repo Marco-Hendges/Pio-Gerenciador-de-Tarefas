@@ -1,20 +1,15 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IonButton, IonCard, IonContent, IonIcon, IonItem, IonLabel, NavController, Platform, IonDatetimeButton, IonModal, IonDatetime } from '@ionic/angular/standalone';
-import { addIcons } from 'ionicons';
-import { checkmark } from 'ionicons/icons';
-import { HeaderComponent } from '../header/header.component';
-import { format } from 'date-fns'; // Biblioteca para manipular datas
+import { IonButton, IonCard, IonContent, IonDatetimeButton, IonModal, NavController, IonInput, IonDatetime } from '@ionic/angular/standalone';
 import { TarefaService } from 'src/app/core/services/tarefa.service';
-
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-cadastrar-tarefa',
   templateUrl: './cadastrar-tarefa.component.html',
   styleUrls: ['./cadastrar-tarefa.component.scss'],
   standalone: true,
-  imports: [IonDatetime, IonModal, IonDatetimeButton, IonCard, HeaderComponent, IonIcon, IonButton, IonContent, ReactiveFormsModule, FormsModule],
+  imports: [IonDatetime, IonModal, IonDatetimeButton, IonCard, IonInput, HeaderComponent, IonButton, IonContent, ReactiveFormsModule, FormsModule],
 })
 export class CadastrarTarefaComponent implements OnInit {
   taskForm: FormGroup;
@@ -33,7 +28,18 @@ export class CadastrarTarefaComponent implements OnInit {
 
   ngOnInit() { { } }
 
+  // Método chamado pelo ionChange no ion-datetime
+  onDateChange(event: any) {
+    const selectedDate = event.detail.value;
+
+    // Atualiza o valor do campo datetime no formulário
+    this.taskForm.patchValue({ datetime: selectedDate });
+    console.log('Data selecionada:', selectedDate);
+  }
+
   onSubmit() {
+
+    console.log(this.taskForm);
     if (this.taskForm.valid) {
       const formData = this.taskForm.value;
 

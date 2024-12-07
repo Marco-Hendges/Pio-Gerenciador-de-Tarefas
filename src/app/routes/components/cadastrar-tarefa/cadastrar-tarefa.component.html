@@ -1,33 +1,27 @@
-<app-header [title]="'Cadastrar de Tarefa'"></app-header>
+<app-header [title]="'Cadastrar Tarefa'"></app-header>
 
 <ion-content class="content">
   <ion-card>
     <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
 
       <!-- Nome da Tarefa -->
-      <ion-input 
-        formControlName="title" 
-        label="Nome da Tarefa" 
-        placeholder="Digite o nome da tarefa"
-        label-placement="floating" 
-        fill="solid">
+      <ion-input formControlName="title" label="Nome da Tarefa" placeholder="Digite o nome da tarefa"
+        label-placement="floating" fill="solid">
       </ion-input>
 
       <!-- Seletor de Data -->
-      <ion-datetime-button datetime="dataTarefa"></ion-datetime-button>
+      <ion-datetime-button datetime="dataTarefa" formControlName="datetime"></ion-datetime-button>
       <ion-modal [keepContentsMounted]="true">
         <ng-template>
-          <ion-datetime id="dataTarefa" presentation="date" formControlName="datetime"></ion-datetime>
+          <ion-datetime id="dataTarefa" (ionChange)="onDateChange($event)"
+          presentation="date-time"></ion-datetime>
         </ng-template>
       </ion-modal>
 
+
       <!-- Descrição -->
-      <ion-input 
-        formControlName="description" 
-        label="Descrição" 
-        placeholder="Adicione uma descrição"
-        label-placement="floating" 
-        fill="solid">
+      <ion-input formControlName="description" label="Descrição" placeholder="Adicione uma descrição"
+        label-placement="floating" fill="solid">
       </ion-input>
 
       <!-- Botão Salvar -->

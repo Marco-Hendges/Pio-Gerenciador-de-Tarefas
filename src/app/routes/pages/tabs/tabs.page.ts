@@ -32,13 +32,13 @@ export class TabsPage {
             this.router.navigate(['/cadastrar-tarefa']);
           },
         },
-        {
-          text: 'Cadastrar Grupo',
-          icon: 'people',
-          handler: () => {
-            this.router.navigate(['/cadastrar-grupo']);
-          },
-        },
+        // {
+        //   text: 'Cadastrar Grupo',
+        //   icon: 'people',
+        //   handler: () => {
+        //     this.router.navigate(['/cadastrar-grupo']);
+        //   },
+        // },
         {
           text: 'Cancelar',
           icon: 'close',

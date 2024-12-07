@@ -5,16 +5,22 @@
     </div>
 
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-      <ion-input formControlName="username" type="text" label="Usuário" label-placement="floating" fill="solid"></ion-input>
-      <ion-input formControlName="password" type="password" label="Senha" label-placement="floating" fill="solid"></ion-input>
+      <ion-input formControlName="username" type="text" label="Usuário" label-placement="floating"
+        fill="solid"></ion-input>
+      <ion-input formControlName="password" type="password" label="Senha" label-placement="floating"
+        fill="solid"></ion-input>
 
       <div *ngIf="errorMessage" class="error-message">
         {{ errorMessage }}
       </div>
 
       <div class="formata-button">
-        <ion-button type="submit" shape="round" size="large" strong="true" [disabled]="loginForm.invalid || loading">
+        <ion-button class="login-button" type="submit" shape="round" size="large" strong="true" [disabled]="loginForm.invalid || loading">
           {{ loading ? 'Entrando...' : 'Entrar' }}
+        </ion-button>
+        <ion-button fill="clear" class="google-button">
+          <img src="assets/images/google-icon.svg" alt="Google Icon" />
+          Login com o Google
         </ion-button>
       </div>
     </form>

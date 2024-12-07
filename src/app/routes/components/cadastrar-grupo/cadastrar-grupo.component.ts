@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IonButton, IonContent, IonIcon, IonItem, IonLabel, IonList } from '@ionic/angular/standalone';
+import { IonButton, IonContent, IonIcon, IonInput, IonItem, IonLabel, IonList } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { checkmark } from 'ionicons/icons';
 import { HeaderComponent } from '../header/header.component';
@@ -13,7 +13,7 @@ import { HeaderComponent } from '../header/header.component';
   templateUrl: './cadastrar-grupo.component.html',
   styleUrls: ['./cadastrar-grupo.component.scss'],
   standalone: true,
-  imports: [HeaderComponent, IonIcon, IonButton, IonList, IonItem, IonLabel, IonList, IonContent, FormsModule, CommonModule, ReactiveFormsModule],
+  imports: [HeaderComponent, IonIcon, IonInput, IonButton, IonList, IonItem, IonLabel, IonList, IonContent, FormsModule, CommonModule, ReactiveFormsModule],
 })
 export class CadastrarGrupoComponent implements OnInit {
 
